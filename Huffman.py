@@ -2,13 +2,13 @@ import os
 
 def heapify(Q, n, i):
     smallest = i
-    left = 2 * i + 1
-    right = 2 * i + 2
+    lewy = 2 * i + 1
+    prawy = 2 * i + 2
 
-    if left < n and Q[left]['czestosc'] < Q[smallest]['czestosc']:
-        smallest = left
-    if right < n and Q[right]['czestosc'] < Q[smallest]['czestosc']:
-        smallest = right
+    if lewy < n and Q[lewy]['czestosc'] < Q[smallest]['czestosc']:
+        smallest = lewy
+    if prawy < n and Q[prawy]['czestosc'] < Q[smallest]['czestosc']:
+        smallest = prawy
 
     if smallest != i:  # jeśli najmniejszy element nie jest obecnym węzłem, zamieniają się one miejscami
         Q[i], Q[smallest] = Q[smallest], Q[i]
