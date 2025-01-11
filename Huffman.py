@@ -74,7 +74,7 @@ def tworzenie_drzewa(czestotliwosci):
     return korzen
 
 def zliczenie_znakow(tekst):
-    czestosc = {}
+    czestosc = {} # liczba wystąpień każdego znaku
     for znak in tekst:
         if znak in czestosc:
             czestosc[znak] += 1
@@ -89,8 +89,10 @@ def kodowanie(korzen, kod='', kody=None):
         if korzen['znak'] is not None:
             kody[korzen['znak']] = kod
         if korzen['lewy']:
+            # rekurencja przez lewe poddrzewo i dopisanie 0 do kodu
             kodowanie(korzen['lewy'], kod + '0', kody)
         if korzen['prawy']:
+            # rekurencja przez prawe poddrzewo i dopisanie 1 do kodu
             kodowanie(korzen['prawy'], kod + '1', kody)
     return kody
 
@@ -188,10 +190,9 @@ def przetwarzanie_pliku(nazwa_pliku, tryb):
 
 
 while True:
-    wybor = input("\nWybierz opcję: zakoduj - [z], dekoduj - [d] lub wyłącz program - [w]: ").strip().lower()
+    wybor = input("\nzakoduj - [z], dekoduj - [d] lub wyłącz program - [w]: ").strip().lower()
 
     if wybor == 'w':
-        print("Program wyłączony")
         break
     elif wybor in ['z', 'd']:
         if wybor == 'z':
